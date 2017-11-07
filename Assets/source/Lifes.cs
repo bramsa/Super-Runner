@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Lifes : MonoBehaviour {
 	
 	public int lifes;
 
-	// bei Spielstart aufrufen um die Leben auf zwei zu setzen
+	// bei Spielstart aufrufen um die Leben auf 2 zu setzen
 	void SetLifes () {
 		lifes = 2;
 	}
 
 	void OnObstacleTouched() {
-		// minus 1 leben bei Hinernisberührung
+		// minus 1 leben bei Hindernisberührung
 		lifes--;
 
 		// wenn keine Leben mehr: gameover-Methode aufrufen
