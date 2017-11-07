@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rgb = GetComponent<Rigidbody>();
+        SendMessage("SetLifes");
 	}
 	
 	// Update is called once per frame
