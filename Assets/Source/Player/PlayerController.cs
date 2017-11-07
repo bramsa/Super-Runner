@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject ground = null;
     public float speed = 10f;
     public float jumpHeight = 10f;
+    public 
 
     private Rigidbody rgb = null;
     
@@ -32,6 +33,11 @@ public class PlayerController : MonoBehaviour {
         if (col.gameObject.Equals(ground))
         {
             isGrounded = true;
+        }
+
+        if (col.gameObject.CompareTag("Obstacle"))
+        {
+            SendMessage("OnObstacleTouched");
         }
     }
 
