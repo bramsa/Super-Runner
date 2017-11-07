@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lives : MonoBehaviour {
+public class Lifes : MonoBehaviour {
 	
 	public int lifes;
-	// Use this for initialization
-	void Start () {
+
+	// bei Spielstart aufrufen um die Leben auf zwei zu setzen
+	void SetLifes () {
 		lifes = 2;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-			
 	}
 
 	void OnObstacleTouched() {
