@@ -12,11 +12,12 @@ public class Lifes : MonoBehaviour {
 	}
 
 	void OnObstacleTouched() {
+		// minus 1 leben bei Hinernisberührung
 		lifes--;
 
-		if(lifes == 0) {
-			// gameover-Methode aufrufen
-			//gameover();
+		// wenn keine Leben mehr: gameover-Methode aufrufen
+		if(lifes == 0) {			
+			//GameOver();
 		}
 	}
 }
