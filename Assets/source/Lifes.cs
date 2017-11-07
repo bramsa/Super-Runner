@@ -21,7 +21,7 @@ public class Lives : MonoBehaviour {
 
 		if(lifes == 0) {
 			// gameover-Methode aufrufen
-			gameover();
+			//gameover();
 		}
 	}
 }
