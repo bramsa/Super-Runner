@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour {
     public GameObject ground = null;
     public float speed = 10f;
     public float jumpHeight = 10f;
-    public 
 
     private Rigidbody rgb = null;
     
