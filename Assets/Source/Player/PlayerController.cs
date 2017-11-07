@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rgb = GetComponent<Rigidbody>();
+        SendMessage("SetLifes");
 	}
 	
 	// Update is called once per frame
@@ -32,6 +33,11 @@ public class PlayerController : MonoBehaviour {
         if (col.gameObject.Equals(ground))
         {
             isGrounded = true;
+        }
+
+        if (col.gameObject.CompareTag("Obstacle"))
+        {
+            SendMessage("OnObstacleTouched");
         }
     }
 

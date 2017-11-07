@@ -14,8 +14,12 @@ public class Lifes : MonoBehaviour {
 		lifes--;
 
 		// wenn keine Leben mehr: gameover-Methode aufrufen
-		if(lifes == 0) {			
-			//GameOver();
+		if(lifes == 0) {
+            GameOver();            
 		}
 	}
+
+    void GameOver() {
+        Destroy(gameObject);
+    }
 }
