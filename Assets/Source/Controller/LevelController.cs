@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour {
 
-    private Object ground = Resources.Load("Ground");
+    private Object ground = null;
     private Vector3 groundPosition = new Vector3(0, 0, 100);
     /// <summary>
     /// The difference for the z position of the new ground. On every annexation of the ground it's
@@ -14,8 +14,8 @@ public class LevelController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+		ground = Resources.Load("Ground");
+    }
 	
 	// Update is called once per frame
 	void Update () {
