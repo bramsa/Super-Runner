@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HighscoreController : MonoBehaviour {
-    public int score = 0;
+
+    public Text LBLScoreOutput = null;
+
+    private int score = 0;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -14,7 +19,8 @@ public class HighscoreController : MonoBehaviour {
 	void Update ()
     {
         score = GetScore();
-	}
+        LBLScoreOutput.text = score.ToString();
+    }
 
     public int GetScore()
     {
