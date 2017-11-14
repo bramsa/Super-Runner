@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Lifes : MonoBehaviour {
+public class LifesController : MonoBehaviour {
 	
 	public int lifes;
 
