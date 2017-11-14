@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    public Animation animationDieHard = null;
+    public Animation amimationRun = null;
     public GameObject ground = null;
     public float speed = 10f;
     public float jumpHeight = 10f;
@@ -15,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rgb = GetComponent<Rigidbody>();
+        SendMessage("SetLifes");
 	}
 	
 	// Update is called once per frame
@@ -22,6 +25,10 @@ public class PlayerController : MonoBehaviour {
         if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             rgb.velocity = new Vector3(0, jumpHeight, 0);
+
+            animationDieHard.Play("diehard");
+        } else {        
+            animationDieHard.Play("charge");
         }
 
         gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
