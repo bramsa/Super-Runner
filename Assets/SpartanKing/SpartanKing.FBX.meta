@@ -1,6 +1,5 @@
 fileFormatVersion: 2
 guid: 608191cf3aeaa85419bb4558fccb064b
-timeCreated: 18446744011573954816
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -107,21 +106,37 @@ ModelImporter:
     7400016: die
     7400018: diehard
     7400020: attack
-<<<<<<< HEAD
-    7400022: runandstoop
-=======
->>>>>>> 33b052e0c2574181a90010b348b6a302e4ad24d4
-    11100000: //RootNode
+    9500000: //RootNode
     13700000: geoCloth
     13700002: geoDiaper
     13700004: geoGold
     13700006: geoSkin
     13700008: geoStandard
     13700010: geoSword
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Standard_7
+    second: {fileID: 2100000, guid: bc2110781daed694ebe7f0b201f8c2d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: matCloth
+    second: {fileID: 2100000, guid: 561d2780b0441324b8e7434304dfb362, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: matGold
+    second: {fileID: 2100000, guid: dfe1b1516f2ccea4a96e91a3a5f6eadf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: matSkin
+    second: {fileID: 2100000, guid: 6d43ce3653b81854b8079d63b237edd5, type: 2}
   materials:
     importMaterials: 1
-    materialName: 3
+    materialName: 0
     materialSearch: 1
     materialLocation: 0
   animations:
@@ -453,44 +468,16 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: runandstoop
-      takeName: Take 001
-      firstFrame: 0
-      lastFrame: 602
-      wrapMode: 2
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -501,12 +488,12 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 4
-    normalCalculationMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -526,7 +513,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
