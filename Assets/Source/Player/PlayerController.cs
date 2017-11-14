@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public Animation animationDieHard = null;
+    public Animation animations = null;
     public Animation amimationRun = null;
     public GameObject ground = null;
     public float speed = 10f;
@@ -25,10 +25,13 @@ public class PlayerController : MonoBehaviour {
         if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             rgb.velocity = new Vector3(0, jumpHeight, 0);
+            animations.Play("diehard");
 
-            animationDieHard.Play("diehard");
-        } else {        
-            animationDieHard.Play("charge");
+        } else if (isGrounded && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))  {
+
+            animations.Play("salute");
+        } else  {
+            animations.Play("run");
         }
 
         gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
