@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HighscoreController : MonoBehaviour {
 
     public Text LBLScoreOutput = null;
+    public HighscoreData highScoreData = null;
 
     private int score = 0;
 
@@ -19,7 +20,10 @@ public class HighscoreController : MonoBehaviour {
 	void Update ()
     {
         score = GetScore();
-        LBLScoreOutput.text = score.ToString();
+        if (LBLScoreOutput != null)
+        {
+            LBLScoreOutput.text = score.ToString();
+        }
     }
 
     public int GetScore()
@@ -28,5 +32,13 @@ public class HighscoreController : MonoBehaviour {
         float scoreMultiplicator = Mathf.Pow(2, Mathf.Floor(z / 1000));
 
         return Mathf.RoundToInt(scoreMultiplicator * z);
+    }
+
+    void OnDestroy()
+    {
+        if (highScoreData.IsHighestScore(score))
+        {
+            highScoreData.SetHighscore(score, "Playername");
+        }
     }
 }
