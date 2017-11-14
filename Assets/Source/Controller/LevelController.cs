@@ -15,6 +15,7 @@ public class LevelController : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		ground = Resources.Load("Ground");
+        generateObstacles(0);
     }
 	
 	// Update is called once per frame
@@ -34,32 +35,42 @@ public class LevelController : MonoBehaviour {
             Instantiate(ground, newGroundPosition, Quaternion.identity);
 
             // Obstacles
-            for (int i = 0; i < 10; i++)
+            generateObstacles(newGroundZPosition);
+        }
+    }
+
+    public void generateObstacles(float newGroundZPosition)
+    {      
+        for (int i = 0; i < 10; i++)
+        {
+            float obstacleYPosition = newGroundZPosition + ++i * 19;
+            var obstaclePosition = new Vector3(0, 0, obstacleYPosition);
+            int obstacleType = Random.Range(1, 4);
+
+            switch (obstacleType)
             {
-                float obstacleYPosition = newGroundZPosition + i * 19;
-                var obstaclePosition = new Vector3(0, 0, obstacleYPosition);
-                int obstacleType = Random.Range(1, 3);
+                // Jump
+                case 1:
+                    Instantiate(Resources.Load("Obstacle_1"), obstaclePosition, Quaternion.identity);
+                    break;
 
-                switch (obstacleType)
-                {
-                    // Jump
-                    case 1:
-                        Instantiate(Resources.Load("Obstacle_1"), obstaclePosition, Quaternion.identity);
-                        break;
+                // Duck
+                case 2:
+                    Instantiate(Resources.Load("Obstacle_2"), obstaclePosition, Quaternion.identity);
+                    break;
 
-                    // Duck
-                    case 2:
-                        Instantiate(Resources.Load("Obstacle_2"), obstaclePosition, Quaternion.identity);
-                        break;
+                // Longer Jump
+                case 3:
+                    Instantiate(Resources.Load("Obstacle_3"), obstaclePosition, Quaternion.identity);
+                    break;
 
-                    // Longer Jump
-                    case 3:
-                        Instantiate(Resources.Load("Obstacle_3"), obstaclePosition, Quaternion.identity);
-                        break;
-                }
-                    
-
+                // Comet
+                case 4:
+                    Instantiate(Resources.Load("Obstacle_4"), obstaclePosition, Quaternion.identity);
+                    break;
             }
+
+
         }
     }
 }
