@@ -24,11 +24,42 @@ public class LevelController : MonoBehaviour {
 
     public void OnCollisionEnter(Collision collision)
     {
+        // Map
         if(collision.gameObject.name.Equals("NextLevel"))
         {
-            var newPosition = new Vector3(0, 0, groundPosition.z + reloadTimeValue);
+            float newGroundZPosition = groundPosition.z + reloadTimeValue;
+
+            var newGroundPosition = new Vector3(0, 0, newGroundZPosition);
             reloadTimeValue += 200;
-            Instantiate(ground, newPosition, Quaternion.identity);
+            Instantiate(ground, newGroundPosition, Quaternion.identity);
+
+            // Obstacles
+            for (int i = 0; i < 10; i++)
+            {
+                float obstacleYPosition = newGroundZPosition + i * 19;
+                var obstaclePosition = new Vector3(0, 0, obstacleYPosition);
+                int obstacleType = Random.Range(1, 3);
+
+                switch (obstacleType)
+                {
+                    // Jump
+                    case 1:
+                        Instantiate(Resources.Load("Obstacle_1"), obstaclePosition, Quaternion.identity);
+                        break;
+
+                    // Duck
+                    case 2:
+                        Instantiate(Resources.Load("Obstacle_2"), obstaclePosition, Quaternion.identity);
+                        break;
+
+                    // Longer Jump
+                    case 3:
+                        Instantiate(Resources.Load("Obstacle_3"), obstaclePosition, Quaternion.identity);
+                        break;
+                }
+                    
+
+            }
         }
     }
 }
