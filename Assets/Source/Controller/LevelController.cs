@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    private Object ground = Resources.Load("Ground");
+    private Vector3 groundPosition = new Vector3(0, 0, 100);
+    /// <summary>
+    /// The difference for the z position of the new ground. On every annexation of the ground it's
+    /// incremented by 200, which is the length of the ground.
+    /// </summary>
+    private int reloadTimeValue = 200;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -13,4 +21,14 @@ public class LevelController : MonoBehaviour {
 	void Update () {
 	    	
 	}
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name.Equals("NextLevel"))
+        {
+            var newPosition = new Vector3(0, 0, groundPosition.z + reloadTimeValue);
+            reloadTimeValue += 200;
+            Instantiate(ground, newPosition, Quaternion.identity);
+        }
+    }
 }
