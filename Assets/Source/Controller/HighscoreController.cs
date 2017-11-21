@@ -34,7 +34,7 @@ public class HighscoreController : MonoBehaviour {
         return Mathf.RoundToInt(scoreMultiplicator * z);
     }
 
-    void OnDestroy()
+    public void OnPlayerDies()
     {
         if (highScoreData.IsHighestScore(score))
         {
