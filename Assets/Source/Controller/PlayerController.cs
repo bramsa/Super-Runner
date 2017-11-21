@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour {
 
     public void OnResume()
     {
-        pause.SetActive(false);
+        GameObject.Find("pausemenu").SetActive(false);
         Time.timeScale = 1;
     }
 
