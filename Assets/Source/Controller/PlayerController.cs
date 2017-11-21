@@ -79,5 +79,6 @@ public class PlayerController : MonoBehaviour {
     public void OnNewGame()
     {
         SceneManager.LoadScene(1, LoadSceneMode.Single);
+        Time.timeScale = 1;
     }
 }
