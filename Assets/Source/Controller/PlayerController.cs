@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
     public Animation animations = null;
     public GameObject ground = null;
+    public GameObject pause = null;
     public float speed = 10f;
     public float jumpHeight = 10f;
 
@@ -16,8 +18,11 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rgb = GetComponent<Rigidbody>();
-        //SendMessage("SetLifes");
-	}
+        SendMessage("SetLifes");
+        pause = GameObject.Find("pausemenu");
+        pause.SetActive(false);
+       
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -39,6 +44,15 @@ public class PlayerController : MonoBehaviour {
             animations.Play("diehard");
         } else  {
              animations.Play("run");
+        }
+
+        if (Input.GetKeyDown("escape"))
+        {
+            if (Time.timeScale == 1)
+            {
+                Time.timeScale = 0;
+                pause.SetActive(true);
+            }
         }
 
         gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
@@ -64,5 +78,17 @@ public class PlayerController : MonoBehaviour {
         {
             isGrounded = false;
         }
+    }
+
+    public void OnResume()
+    {
+        GameObject.Find("pausemenu").SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void OnNewGame()
+    {
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        Time.timeScale = 1;
     }
 }
