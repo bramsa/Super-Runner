@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Obstacle
   - Invisible
-  - Pause
+  - NextLevelBlock
+  - Ground
   layers:
   - Default
   - TransparentFX

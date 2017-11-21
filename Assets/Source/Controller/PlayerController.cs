@@ -61,12 +61,12 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
+        gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.World);
 	}
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.Equals(ground))
+        if (col.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
         }
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void OnCollisionExit(Collision col) {
-        if (col.gameObject.Equals(ground))
+        if (col.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
         }
