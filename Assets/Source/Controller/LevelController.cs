@@ -34,10 +34,10 @@ public class LevelController : MonoBehaviour
             float newGroundZPosition = groundPosition.z + reloadTimeValue;
             var newGroundPosition = new Vector3(0, 0, newGroundZPosition);
             reloadTimeValue += 200;
-            Instantiate(Resources.Load("Prefabs/Ground", typeof(GameObject)) as GameObject, newGroundPosition, Quaternion.identity);
+            GameObject ground = Instantiate(Resources.Load("Prefabs/Ground", typeof(GameObject)) as GameObject, newGroundPosition, Quaternion.identity);
 
-            // Obstacles
-            generateObstacles(newGroundZPosition);
+            // Obstacles start on the beginning of the ground
+            generateObstacles(newGroundZPosition - 100);
         }
     }
 

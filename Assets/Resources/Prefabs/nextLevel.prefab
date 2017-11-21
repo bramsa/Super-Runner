@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 23310182897442866}
   - component: {fileID: 54783478205477228}
   m_Layer: 0
-  m_Name: nextLevel
-  m_TagString: Untagged
+  m_Name: NextLevel
+  m_TagString: NextLevelBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
