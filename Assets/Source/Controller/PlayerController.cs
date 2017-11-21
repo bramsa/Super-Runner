@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
-    //public Animation animations = null;
-    //public Animation amimationRun = null;
+    public Animation animations = null;
     public GameObject ground = null;
     public GameObject pause = null;
     public float speed = 10f;
@@ -14,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody rgb = null;
     
-    private bool isGrounded = false;
+    private bool isGrounded = true;
 
 	// Use this for initialization
 	void Start () {
@@ -30,13 +29,13 @@ public class PlayerController : MonoBehaviour {
         if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             rgb.velocity = new Vector3(0, jumpHeight, 0);
-            //animations.Play("diehard");
+            animations.Play("diehard");
 
         } else if (isGrounded && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))  {
 
-            //animations.Play("salute");
+            animations.Play("salute");
         } else  {
-            //animations.Play("run");
+             animations.Play("run");
         }
 
         if (Input.GetKeyDown("escape"))
@@ -60,7 +59,7 @@ public class PlayerController : MonoBehaviour {
 
         if (col.gameObject.CompareTag("Obstacle"))
         {
-            SendMessage("OnObstacleTouched");
+           // SendMessage("OnObstacleTouched");
         }
     }
 
