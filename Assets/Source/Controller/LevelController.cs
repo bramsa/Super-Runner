@@ -44,7 +44,7 @@ public class LevelController : MonoBehaviour
 
     public void generateObstacles(float newGroundZPosition)
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 1; i <= 10; i++)
         {
             float obstacleZPosition = newGroundZPosition + i * 20;
             int obstacleType = Random.Range(1, 5);
@@ -76,8 +76,15 @@ public class LevelController : MonoBehaviour
                 case 4:
                     var obstacle_4Position = new Vector3(0, 3.5F, obstacleZPosition);
                     GameObject obstacle_4 = Instantiate(Resources.Load("Prefabs/Obstacle_4", typeof(GameObject)) as GameObject, obstacle_4Position, Quaternion.identity);
-                    // obstacle_4.transform.Rotate(0, 0, 0, Space.Self);
                     break;
+            }
+
+            // NextLevel
+            if(obstacleZPosition == newGroundZPosition + 100)
+            {
+                var nextLevelBlock = new Vector3(0, 5.5F, obstacleZPosition);
+                GameObject obstacle_4 = Instantiate(Resources.Load("Prefabs/NextLevel", typeof(GameObject)) as GameObject, nextLevelBlock, Quaternion.identity);
+
             }
         }
     }
