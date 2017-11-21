@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.Equals(ground))
+        if (col.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
         }
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void OnCollisionExit(Collision col) {
-        if (col.gameObject.Equals(ground))
+        if (col.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
         }
