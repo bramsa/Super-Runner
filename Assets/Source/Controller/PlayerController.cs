@@ -14,9 +14,10 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rgb = null;
     private bool isCrashed = false;
     private bool isGrounded = true;
+    private BoxCollider boxCol;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         rgb = GetComponent<Rigidbody>();
         SendMessage("SetLifes");
         pause = GameObject.Find("pausemenu");
@@ -26,24 +27,29 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
+        if (isCrashed)
+        {
+            animations.Play("diehard");
+        } else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             rgb.velocity = new Vector3(0, jumpHeight, 0);
             animations.Play("diehard");
 
-        } else if (isGrounded && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))  {
+        } else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))  {
 
             animations["salute"].speed = 10f;
 
             animations.Play("salute");
-        }
-        else if (!isGrounded) {
-            animations.Play("diehard");
-        } else if (isCrashed)
-        {
-            animations.Play("diehard");
-        } else  {
+            boxCol = gameObject.GetComponent<BoxCollider>();
+
+            boxCol.size = new Vector3((float)0.1685139, (float)0.09670291, (float)0.2071988);
+            boxCol.center = new Vector3((float)-8.940697e-09, (float)0.09670291, (float)0.01407976);
+        }else {
              animations.Play("run");
+            boxCol = gameObject.GetComponent<BoxCollider>();
+
+            boxCol.size = new Vector3((float)0.1685139, (float)0.399661, (float)0.2071988);
+            boxCol.center = new Vector3((float)-8.940697e-09, (float)0.1984264, (float)0.01407976);
         }
 
         if (Input.GetKeyDown("escape"))
