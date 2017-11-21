@@ -4434,11 +4434,13 @@ MonoBehaviour:
   pause: {fileID: 1147176093}
   speed: 10
   jumpHeight: 10
+<<<<<<< HEAD
 --- !u!111 &893122562 stripped
 Animation:
   m_PrefabParentObject: {fileID: 11100000, guid: 608191cf3aeaa85419bb4558fccb064b,
     type: 3}
   m_PrefabInternal: {fileID: 1586776165}
+=======
 --- !u!54 &893122564
 Rigidbody:
   m_ObjectHideFlags: 0
