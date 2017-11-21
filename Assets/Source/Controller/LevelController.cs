@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
 
-    private Object ground = null;
+    // private Object ground = null;
     private Vector3 groundPosition = new Vector3(0, 0, 100);
     /// <summary>
     /// The difference for the z position of the new ground. On every annexation of the ground it's
@@ -26,16 +26,15 @@ public class LevelController : MonoBehaviour
 
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider collider)
     {
         // Map
-        if (collision.gameObject.name.Equals("NextLevel"))
+        if (collider.gameObject.CompareTag("NextLevelBlock"))
         {
             float newGroundZPosition = groundPosition.z + reloadTimeValue;
-
             var newGroundPosition = new Vector3(0, 0, newGroundZPosition);
             reloadTimeValue += 200;
-            Instantiate(ground, newGroundPosition, Quaternion.identity);
+            Instantiate(Resources.Load("Prefabs/Ground", typeof(GameObject)) as GameObject, newGroundPosition, Quaternion.identity);
 
             // Obstacles
             generateObstacles(newGroundZPosition);
