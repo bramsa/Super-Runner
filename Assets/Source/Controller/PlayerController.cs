@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
+        gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.World);
 	}
 
     void OnCollisionEnter(Collision col)
