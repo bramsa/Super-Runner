@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpHeight = 10f;
 
     private Rigidbody rgb = null;
-    
+    private bool isCrashed = false;
     private bool isGrounded = true;
 
 	// Use this for initialization
@@ -28,7 +28,15 @@ public class PlayerController : MonoBehaviour {
 
         } else if (isGrounded && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))  {
 
+            animations["salute"].speed = 10f;
+
             animations.Play("salute");
+        }
+        else if (!isGrounded) {
+            animations.Play("diehard");
+        } else if (isCrashed)
+        {
+            animations.Play("diehard");
         } else  {
              animations.Play("run");
         }
@@ -45,7 +53,9 @@ public class PlayerController : MonoBehaviour {
 
         if (col.gameObject.CompareTag("Obstacle"))
         {
-           // SendMessage("OnObstacleTouched");
+            // SendMessage("OnObstacleTouched");
+            animations.Play("diehard");
+            isCrashed = true;
         }
     }
 
