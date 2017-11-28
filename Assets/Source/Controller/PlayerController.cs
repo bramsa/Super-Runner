@@ -41,11 +41,7 @@ public class PlayerController : MonoBehaviour
 
             Duck();
             
-        }else {
-
-            Die();
-        }
-        else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
+        } else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             rgb.velocity = new Vector3(0, jumpHeight, 0);
             animations.Play("diehard");
