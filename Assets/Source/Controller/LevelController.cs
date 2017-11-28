@@ -43,16 +43,16 @@ public class LevelController : MonoBehaviour
 
     public void generateObstacles(float newGroundZPosition)
     {
-        for (int i = 1; i <= 10; i++)
+        for (int i = 1; i <= 5; i++)
         {
-            float obstacleZPosition = newGroundZPosition + i * 20;
+            float obstacleZPosition = newGroundZPosition + i * 40;
             int obstacleType = Random.Range(1, 6);
 
             switch (obstacleType)
             {
                 // Jump
                 case 1:
-                    var obstacle_1Position = new Vector3(0, 2.5F, obstacleZPosition);
+                    var obstacle_1Position = new Vector3(0, 1.75F, obstacleZPosition);
                     GameObject obstacle_1 = Instantiate(Resources.Load("Prefabs/Obstacle_1", typeof(GameObject)) as GameObject, obstacle_1Position, Quaternion.identity);
                     obstacle_1.transform.Rotate(0, 0, 90, Space.Self);
                     break;
@@ -73,19 +73,19 @@ public class LevelController : MonoBehaviour
 
                 // Comet
                 case 4:
-                    var obstacle_4Position = new Vector3(0, 3.5F, obstacleZPosition);
+                    var obstacle_4Position = new Vector3(0, 4F, obstacleZPosition);
                     GameObject obstacle_4 = Instantiate(Resources.Load("Prefabs/Obstacle_4", typeof(GameObject)) as GameObject, obstacle_4Position, Quaternion.identity);
                     break;
 
                 // WallOfFire
                 case 5:
-                    var obstacle_5Position = new Vector3(0, 1F, obstacleZPosition);
+                    var obstacle_5Position = new Vector3(0, 0, obstacleZPosition);
                     GameObject obstacle_5 = Instantiate(Resources.Load("Prefabs/Obstacle_5", typeof(GameObject)) as GameObject, obstacle_5Position, Quaternion.identity);
                     break;
             }
 
             // NextLevel
-            if(obstacleZPosition == newGroundZPosition + 100)
+            if(obstacleZPosition == newGroundZPosition + 120)
             {
                 var nextLevelBlock = new Vector3(0, 5.5F, obstacleZPosition);
                 GameObject obstacle_4 = Instantiate(Resources.Load("Prefabs/NextLevel", typeof(GameObject)) as GameObject, nextLevelBlock, Quaternion.identity);
