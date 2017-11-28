@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour
     {
         if (isCrashed)
         {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9dfd4862ca6f0852cd9d864f5b05d5aba5b510f1
             Crashed();
         } else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
@@ -41,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
             Duck();
             
+<<<<<<< HEAD
         } else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             rgb.velocity = new Vector3(0, jumpHeight, 0);
@@ -64,7 +69,11 @@ public class PlayerController : MonoBehaviour
             boxCol = gameObject.GetComponent<BoxCollider>();
 
             Run();
+=======
+        }else {
+>>>>>>> 9dfd4862ca6f0852cd9d864f5b05d5aba5b510f1
 
+            animations.Play("diehard");
         }
 
         if (Input.GetKeyDown("escape"))
@@ -76,11 +85,14 @@ public class PlayerController : MonoBehaviour
         Move();
 	}
 
+<<<<<<< HEAD
     private void Die()
     {
         animations.Play("diehard"); 
     
     }
+=======
+>>>>>>> 9dfd4862ca6f0852cd9d864f5b05d5aba5b510f1
 
     private void Move()
     {
