@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -32,6 +33,17 @@ public class PlayerController : MonoBehaviour
     {
         if (isCrashed)
         {
+<<<<<<< HEAD
+            Crashed();
+        } else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
+        {
+            Jump();
+        } else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))  {
+
+            Duck();
+            
+        }else {
+=======
             animations.Play("diehard");
         }
         else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
@@ -55,21 +67,65 @@ public class PlayerController : MonoBehaviour
         {
             animations.Play("run");
             boxCol = gameObject.GetComponent<BoxCollider>();
+>>>>>>> 93aefea99387bcf9534aa0f2a6479049a7f7078c
 
-            boxCol.size = new Vector3((float)0.1685139, (float)0.399661, (float)0.2071988);
-            boxCol.center = new Vector3((float)-8.940697e-09, (float)0.1984264, (float)0.01407976);
+            Run();
+
         }
 
         if (Input.GetKeyDown("escape"))
         {
-            if (Time.timeScale == 1)
-            {
-                Time.timeScale = 0;
-                pause.SetActive(true);
-            }
+            Pause();
+           
         }
 
+<<<<<<< HEAD
+        Move();
+	}
+=======
         gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.World);
+    }
+>>>>>>> 93aefea99387bcf9534aa0f2a6479049a7f7078c
+
+    private void Move()
+    {
+        gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.World);
+    }
+
+    private void Pause()
+    {
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+            pause.SetActive(true);
+        }
+    }
+
+    private void Run()
+    {
+
+        animations.Play("run");
+        boxCol = gameObject.GetComponent<BoxCollider>();
+
+        boxCol.size = new Vector3((float)0.1685139, (float)0.399661, (float)0.2071988);
+        boxCol.center = new Vector3((float)-8.940697e-09, (float)0.1984264, (float)0.01407976);
+    }
+
+    private void Duck()
+    {
+        animations["salute"].speed = 10f;
+
+        animations.Play("salute");
+        boxCol = gameObject.GetComponent<BoxCollider>();
+
+        boxCol.size = new Vector3((float)0.1685139, (float)0.09670291, (float)0.2071988);
+        boxCol.center = new Vector3((float)-8.940697e-09, (float)0.09670291, (float)0.01407976);
+    }
+
+    private void Jump()
+    {
+        rgb.velocity = new Vector3(0, jumpHeight, 0);
+        animations.Play("diehard");
     }
 
     void OnCollisionEnter(Collision col)
@@ -108,5 +164,11 @@ public class PlayerController : MonoBehaviour
     {
         SceneManager.LoadScene(1, LoadSceneMode.Single);
         Time.timeScale = 1;
+    }
+
+    private void Crashed()
+    {
+        animations.Play("diehard");
+
     }
 }
