@@ -10,7 +10,7 @@ namespace Assets.Source.Controller
     {
         public void Start()
         {
-            InvokeRepeating("changeColors", 0, 2);
+            InvokeRepeating("changeColors", 0, 1);
         }
 
         /// <summary>
@@ -20,7 +20,15 @@ namespace Assets.Source.Controller
         {
             //GameObject gameObject = Resources.Load("Prefabs/Obstacle_1", typeof(GameObject)) as GameObject;
             //GameObject[] gameObjects = (FindObjectsOfType(gameObject.GetType())) as GameObject[];
-            GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Obstacle");
+            // Create an array with all obstacle game objects and convert it afterwards to a list
+            List<GameObject> gameObjects = (GameObject.FindGameObjectsWithTag("Obstacle")).OfType<GameObject>().ToList();
+
+            // Grounds
+            foreach(GameObject ground in GameObject.FindGameObjectsWithTag("Ground"))
+            {
+                gameObjects.Add(ground);
+            }
+            
             Debug.Log("changeColors called");
 
             foreach (GameObject obstacle in gameObjects)
@@ -28,18 +36,21 @@ namespace Assets.Source.Controller
                 // Only these objects
                 if (obstacle.name.Equals("Obstacle_1(Clone)")
                     || obstacle.name.Equals("Obstacle_2(Clone)")
-                    || obstacle.name.Equals("Obstacle_3(Clone)"))
+                    || obstacle.name.Equals("Obstacle_3(Clone)")
+                    || obstacle.name.Equals("Ground")
+                    || obstacle.name.Equals("Ground(Clone)"))
                 {
                     Renderer obstacleRenderer = obstacle.GetComponent<MeshRenderer>();
                     if (obstacleRenderer != null)
                     {
                         if (obstacleRenderer.material != null)
                         {
-                            /*int red = UnityEngine.Random.Range(0, 256);
-                            int green = UnityEngine.Random.Range(0, 256);
-                            int blue = UnityEngine.Random.Range(0, 256);
-                            obstacleRenderer.material.color = new Color(red, green, blue);*/
-                            obstacleRenderer.material.color = Color.red;
+                            float red = UnityEngine.Random.Range(0F, 1F);
+                            float green = UnityEngine.Random.Range(0F, 1F);
+                            float blue = UnityEngine.Random.Range(0F, 1F);
+                            obstacleRenderer.material.color = new Color(red, green, blue);
+                            //obstacleRenderer.material.color = Color.red;
+
                         }
                     }
                 }
