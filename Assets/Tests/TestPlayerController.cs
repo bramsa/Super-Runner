@@ -7,7 +7,7 @@ public class jumpAnd {
 
 /* 	[UnityTest]
 	public IEnumerator jumpAndWithEnumeratorPasses() {
-        GameObject player = new GameObject().AddComponent(PlayerController.animations);
+        //GameObject player = new GameObject().AddComponent(PlayerController.animations);
 		yield return null;
 	} */
 }
