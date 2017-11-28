@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
     {
         if (isCrashed)
         {
-<<<<<<< HEAD
             Crashed();
         } else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
@@ -43,8 +42,8 @@ public class PlayerController : MonoBehaviour
             Duck();
             
         }else {
-=======
-            animations.Play("diehard");
+
+            Die();
         }
         else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
@@ -67,7 +66,6 @@ public class PlayerController : MonoBehaviour
         {
             animations.Play("run");
             boxCol = gameObject.GetComponent<BoxCollider>();
->>>>>>> 93aefea99387bcf9534aa0f2a6479049a7f7078c
 
             Run();
 
@@ -79,13 +77,14 @@ public class PlayerController : MonoBehaviour
            
         }
 
-<<<<<<< HEAD
         Move();
 	}
-=======
-        gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.World);
+
+    private void Die()
+    {
+        animations.Play("diehard"); 
+    
     }
->>>>>>> 93aefea99387bcf9534aa0f2a6479049a7f7078c
 
     private void Move()
     {
