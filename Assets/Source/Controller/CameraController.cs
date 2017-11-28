@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour {
+public class CameraController : MonoBehaviour
+{
 
     public float minSecondsPassedToSwichAgain = 5;
     public float averageSecondsToSwichAgain = 10;
@@ -11,17 +12,17 @@ public class CameraController : MonoBehaviour {
     public GameObject positionBehind = null;
     public GameObject positionRight = null;
 
-    public bool switched = false;
-
     private float secondsPassedSinceLastSwitch = 0f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         SwitchToRandomPosition();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         secondsPassedSinceLastSwitch += Time.deltaTime;
 
         if (secondsPassedSinceLastSwitch >= averageSecondsToSwichAgain)
@@ -32,11 +33,15 @@ public class CameraController : MonoBehaviour {
                 secondsPassedSinceLastSwitch = 0f;
             }
         }
-	}
+    }
 
-    void SwitchToRandomPosition()
+    /// <summary>
+    /// Chooses a random position of the three (positionLeft, positionBehind, positionRight) and switches
+    /// the gameobject to the local position of the choosen one
+    /// </summary>
+    public void SwitchToRandomPosition()
     {
-        int position = Mathf.RoundToInt(Random.Range(1, 4));
+        int position = Random.Range(1, 4);
         switch (position)
         {
             case 1:
@@ -51,12 +56,21 @@ public class CameraController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Switchs the gameobject to the local position of the passed GameObject
+    /// </summary>
+    /// <param name="pos"></param>
     void SwitchToPosition(GameObject pos)
     {
         gameObject.transform.localPosition = pos.transform.localPosition;
         gameObject.transform.localRotation = pos.transform.localRotation;
     }
 
+    /// <summary>
+    /// Generates a random boolean. The larger averageSecondsToSwichAgain is, the more likely it returns true
+    /// The duration of the time since the last frame has an effect too
+    /// </summary>
+    /// <returns></returns>
     bool RandomBool()
     {
         return Mathf.RoundToInt(Random.Range(0, (1 / Time.deltaTime) * averageSecondsToSwichAgain)) == 0;

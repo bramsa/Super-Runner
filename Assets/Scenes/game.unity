@@ -4290,6 +4290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LBLScoreOutput: {fileID: 370984206}
   highScoreData: {fileID: 11400000, guid: b62b1570f2c40cb49a74aa09818f4b6b, type: 2}
+  txtHighscore: {fileID: 258716977}
 --- !u!1 &899688892
 GameObject:
   m_ObjectHideFlags: 0
@@ -5041,8 +5042,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ShowHighscore
+      - m_Target: {fileID: 893122568}
+        m_MethodName: OnShowHighscore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
