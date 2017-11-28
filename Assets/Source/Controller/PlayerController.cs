@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            // SendMessage("OnObstacleTouched");
+            SendMessage("OnObstacleTouched");
             animations.Play("diehard");
             isCrashed = true;
         }
