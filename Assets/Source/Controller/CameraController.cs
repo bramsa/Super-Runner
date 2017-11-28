@@ -35,6 +35,11 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Chooses a random position of the three (positionLeft, positionBehind, positionRight) and switches
+    /// the gameobject to the local position of the choosen one
+    /// </summary>
+    public void SwitchToRandomPosition()
     {
         int position = Random.Range(1, 4);
         switch (position)
