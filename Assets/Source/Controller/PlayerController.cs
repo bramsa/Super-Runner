@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour {
 
         if (col.gameObject.CompareTag("Obstacle"))
         {
-           // SendMessage("OnObstacleTouched");
+           SendMessage("OnObstacleTouched");
         }
     }
 
