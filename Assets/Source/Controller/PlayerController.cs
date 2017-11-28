@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isCrashed)
         {
-<<<<<<< HEAD
+
             Crashed();
         } else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
@@ -43,34 +43,8 @@ public class PlayerController : MonoBehaviour
             Duck();
             
         }else {
-=======
+
             animations.Play("diehard");
-        }
-        else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
-        {
-            rgb.velocity = new Vector3(0, jumpHeight, 0);
-            animations.Play("diehard");
-
-        }
-        else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))
-        {
-
-            animations["salute"].speed = 10f;
-
-            animations.Play("salute");
-            boxCol = gameObject.GetComponent<BoxCollider>();
-
-            boxCol.size = new Vector3((float)0.1685139, (float)0.09670291, (float)0.2071988);
-            boxCol.center = new Vector3((float)-8.940697e-09, (float)0.09670291, (float)0.01407976);
-        }
-        else
-        {
-            animations.Play("run");
-            boxCol = gameObject.GetComponent<BoxCollider>();
->>>>>>> 93aefea99387bcf9534aa0f2a6479049a7f7078c
-
-            Run();
-
         }
 
         if (Input.GetKeyDown("escape"))
@@ -79,13 +53,9 @@ public class PlayerController : MonoBehaviour
            
         }
 
-<<<<<<< HEAD
         Move();
 	}
-=======
-        gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.World);
-    }
->>>>>>> 93aefea99387bcf9534aa0f2a6479049a7f7078c
+
 
     private void Move()
     {
