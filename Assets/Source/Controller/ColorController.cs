@@ -26,14 +26,18 @@ namespace Assets.Source.Controller
             foreach (GameObject obstacle in gameObjects)
             {
                 Renderer obstacleRenderer = obstacle.GetComponentInChildren<Renderer>();
-                if(obstacleRenderer.material != null) //Obstacle_2(Clone)
+                if(obstacleRenderer != null)
                 {
-                    int red = UnityEngine.Random.Range(0, 256);
-                    int green = UnityEngine.Random.Range(0, 256);
-                    int blue = UnityEngine.Random.Range(0, 256);
-                    obstacleRenderer.material.color = new Color(red, green, blue);
-                    //obstacleMaterial.color = Color.red;
+                    if (obstacleRenderer.material != null) //Obstacle_2(Clone)
+                    {
+                        int red = UnityEngine.Random.Range(0, 256);
+                        int green = UnityEngine.Random.Range(0, 256);
+                        int blue = UnityEngine.Random.Range(0, 256);
+                        obstacleRenderer.material.color = new Color(red, green, blue);
+                        //obstacleMaterial.color = Color.red;
+                    }
                 }
+
                 
             }
         }
