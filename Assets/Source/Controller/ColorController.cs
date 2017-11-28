@@ -26,7 +26,7 @@ namespace Assets.Source.Controller
             foreach (GameObject obstacle in gameObjects)
             {
                 Renderer obstacleRenderer = obstacle.GetComponentInChildren<Renderer>();
-                if(obstacleRenderer != null)
+              /*  if(obstacleRenderer != null)
                 {
                     if (obstacleRenderer.material != null) //Obstacle_2(Clone)
                     {
@@ -36,7 +36,7 @@ namespace Assets.Source.Controller
                         obstacleRenderer.material.color = new Color(red, green, blue);
                         //obstacleMaterial.color = Color.red;
                     }
-                }
+                } */
 
                 
             }

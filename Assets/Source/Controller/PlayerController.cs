@@ -75,21 +75,21 @@ public class PlayerController : MonoBehaviour
            
         }
 
-        Move();
+        Move(Time.deltaTime);
 	}
 
-    private void Die()
+    public void Die()
     {
         animations.Play("diehard"); 
     
     }
 
-    private void Move()
+    public void Move(float deltaTime)
     {
-        gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.World);
+        gameObject.transform.Translate(new Vector3(0, 0, speed * deltaTime), Space.World);
     }
 
-    private void Pause()
+    public void Pause()
     {
         if (Time.timeScale == 1)
         {
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Run()
+    public void Run()
     {
 
         animations.Play("run");
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
         boxCol.center = new Vector3((float)-8.940697e-09, (float)0.1984264, (float)0.01407976);
     }
 
-    private void Duck()
+    public void Duck()
     {
         animations["salute"].speed = 10f;
 
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
         boxCol.center = new Vector3((float)-8.940697e-09, (float)0.09670291, (float)0.01407976);
     }
 
-    private void Jump()
+    public void Jump()
     {
         rgb.velocity = new Vector3(0, jumpHeight, 0);
         animations.Play("diehard");
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private void Crashed()
+    public void Crashed()
     {
         animations.Play("diehard");
 
