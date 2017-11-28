@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour {
+public class CameraController : MonoBehaviour
+{
 
     public float minSecondsPassedToSwichAgain = 5;
     public float averageSecondsToSwichAgain = 10;
@@ -15,13 +16,15 @@ public class CameraController : MonoBehaviour {
 
     private float secondsPassedSinceLastSwitch = 0f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         SwitchToRandomPosition();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         secondsPassedSinceLastSwitch += Time.deltaTime;
 
         if (secondsPassedSinceLastSwitch >= averageSecondsToSwichAgain)
@@ -32,7 +35,7 @@ public class CameraController : MonoBehaviour {
                 secondsPassedSinceLastSwitch = 0f;
             }
         }
-	}
+    }
 
     void SwitchToRandomPosition()
     {

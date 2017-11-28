@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     public Animation animations = null;
     public GameObject ground = null;
@@ -17,25 +18,30 @@ public class PlayerController : MonoBehaviour {
     private BoxCollider boxCol;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         rgb = GetComponent<Rigidbody>();
         SendMessage("SetLifes");
         pause = GameObject.Find("pausemenu");
         pause.SetActive(false);
-       
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (isCrashed)
         {
             animations.Play("diehard");
-        } else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
+        }
+        else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             rgb.velocity = new Vector3(0, jumpHeight, 0);
             animations.Play("diehard");
 
-        } else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))  {
+        }
+        else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))
+        {
 
             animations["salute"].speed = 10f;
 
@@ -44,8 +50,10 @@ public class PlayerController : MonoBehaviour {
 
             boxCol.size = new Vector3((float)0.1685139, (float)0.09670291, (float)0.2071988);
             boxCol.center = new Vector3((float)-8.940697e-09, (float)0.09670291, (float)0.01407976);
-        }else {
-             animations.Play("run");
+        }
+        else
+        {
+            animations.Play("run");
             boxCol = gameObject.GetComponent<BoxCollider>();
 
             boxCol.size = new Vector3((float)0.1685139, (float)0.399661, (float)0.2071988);
@@ -62,7 +70,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.World);
-	}
+    }
 
     void OnCollisionEnter(Collision col)
     {
@@ -82,7 +90,8 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void OnCollisionExit(Collision col) {
+    void OnCollisionExit(Collision col)
+    {
         if (col.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
