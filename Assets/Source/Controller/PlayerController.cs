@@ -33,18 +33,40 @@ public class PlayerController : MonoBehaviour
     {
         if (isCrashed)
         {
-
             Crashed();
-        } else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
+        }
+        else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             Jump();
-        } else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))  {
+        }
+        else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))
+        {
 
             Duck();
-            
-        }else {
-
+        }
+        else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
+        {
+            rgb.velocity = new Vector3(0, jumpHeight, 0);
             animations.Play("diehard");
+
+        }
+        else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))
+        {
+
+            animations["salute"].speed = 10f;
+
+            animations.Play("salute");
+            boxCol = gameObject.GetComponent<BoxCollider>();
+
+            boxCol.size = new Vector3((float)0.1685139, (float)0.09670291, (float)0.2071988);
+            boxCol.center = new Vector3((float)-8.940697e-09, (float)0.09670291, (float)0.01407976);
+        }
+        else
+        {
+            animations.Play("run");
+            boxCol = gameObject.GetComponent<BoxCollider>();
+
+            Run();
         }
 
         if (Input.GetKeyDown("escape"))
@@ -56,6 +78,11 @@ public class PlayerController : MonoBehaviour
         Move();
 	}
 
+    private void Die()
+    {
+        animations.Play("diehard"); 
+    
+    }
 
     private void Move()
     {
