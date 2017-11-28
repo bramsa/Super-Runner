@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     public Animation animations = null;
     public GameObject ground = null;
@@ -17,25 +19,41 @@ public class PlayerController : MonoBehaviour {
     private BoxCollider boxCol;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         rgb = GetComponent<Rigidbody>();
         SendMessage("SetLifes");
         pause = GameObject.Find("pausemenu");
         pause.SetActive(false);
-       
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (isCrashed)
         {
-            animations.Play("diehard");
+<<<<<<< HEAD
+            Crashed();
         } else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
+        {
+            Jump();
+        } else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))  {
+
+            Duck();
+            
+        }else {
+=======
+            animations.Play("diehard");
+        }
+        else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             rgb.velocity = new Vector3(0, jumpHeight, 0);
             animations.Play("diehard");
 
-        } else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))  {
+        }
+        else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))
+        {
 
             animations["salute"].speed = 10f;
 
@@ -44,25 +62,71 @@ public class PlayerController : MonoBehaviour {
 
             boxCol.size = new Vector3((float)0.1685139, (float)0.09670291, (float)0.2071988);
             boxCol.center = new Vector3((float)-8.940697e-09, (float)0.09670291, (float)0.01407976);
-        }else {
-             animations.Play("run");
+        }
+        else
+        {
+            animations.Play("run");
             boxCol = gameObject.GetComponent<BoxCollider>();
+>>>>>>> 93aefea99387bcf9534aa0f2a6479049a7f7078c
 
-            boxCol.size = new Vector3((float)0.1685139, (float)0.399661, (float)0.2071988);
-            boxCol.center = new Vector3((float)-8.940697e-09, (float)0.1984264, (float)0.01407976);
+            Run();
+
         }
 
         if (Input.GetKeyDown("escape"))
         {
-            if (Time.timeScale == 1)
-            {
-                Time.timeScale = 0;
-                pause.SetActive(true);
-            }
+            Pause();
+           
         }
 
-        gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.World);
+<<<<<<< HEAD
+        Move();
 	}
+=======
+        gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.World);
+    }
+>>>>>>> 93aefea99387bcf9534aa0f2a6479049a7f7078c
+
+    private void Move()
+    {
+        gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.World);
+    }
+
+    private void Pause()
+    {
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+            pause.SetActive(true);
+        }
+    }
+
+    private void Run()
+    {
+
+        animations.Play("run");
+        boxCol = gameObject.GetComponent<BoxCollider>();
+
+        boxCol.size = new Vector3((float)0.1685139, (float)0.399661, (float)0.2071988);
+        boxCol.center = new Vector3((float)-8.940697e-09, (float)0.1984264, (float)0.01407976);
+    }
+
+    private void Duck()
+    {
+        animations["salute"].speed = 10f;
+
+        animations.Play("salute");
+        boxCol = gameObject.GetComponent<BoxCollider>();
+
+        boxCol.size = new Vector3((float)0.1685139, (float)0.09670291, (float)0.2071988);
+        boxCol.center = new Vector3((float)-8.940697e-09, (float)0.09670291, (float)0.01407976);
+    }
+
+    private void Jump()
+    {
+        rgb.velocity = new Vector3(0, jumpHeight, 0);
+        animations.Play("diehard");
+    }
 
     void OnCollisionEnter(Collision col)
     {
@@ -70,16 +134,20 @@ public class PlayerController : MonoBehaviour {
         {
             isGrounded = true;
         }
+    }
 
-        if (col.gameObject.CompareTag("Obstacle"))
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Obstacle"))
         {
-            // SendMessage("OnObstacleTouched");
+            SendMessage("OnObstacleTouched");
             animations.Play("diehard");
             isCrashed = true;
         }
     }
 
-    void OnCollisionExit(Collision col) {
+    void OnCollisionExit(Collision col)
+    {
         if (col.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
@@ -96,5 +164,11 @@ public class PlayerController : MonoBehaviour {
     {
         SceneManager.LoadScene(1, LoadSceneMode.Single);
         Time.timeScale = 1;
+    }
+
+    private void Crashed()
+    {
+        animations.Play("diehard");
+
     }
 }

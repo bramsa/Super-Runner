@@ -85,7 +85,7 @@ public class LevelController : MonoBehaviour
             }
 
             // NextLevel
-            if(obstacleZPosition == newGroundZPosition + 120)
+            if (obstacleZPosition == newGroundZPosition + 120)
             {
                 var nextLevelBlock = new Vector3(0, 5.5F, obstacleZPosition);
                 GameObject obstacle_4 = Instantiate(Resources.Load("Prefabs/NextLevel", typeof(GameObject)) as GameObject, nextLevelBlock, Quaternion.identity);

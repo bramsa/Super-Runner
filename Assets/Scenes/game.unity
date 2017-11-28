@@ -4301,6 +4301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f3f23da04bf8344b0ba25411e9b52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  txtHighscore: {fileID: 258716977}
 --- !u!1 &899688892
 GameObject:
   m_ObjectHideFlags: 0
@@ -5052,8 +5053,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ShowHighscore
+      - m_Target: {fileID: 893122568}
+        m_MethodName: OnShowHighscore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
