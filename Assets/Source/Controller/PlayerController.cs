@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     public Animation animations = null;
     public GameObject ground = null;
@@ -12,30 +13,35 @@ public class PlayerController : MonoBehaviour {
     public float jumpHeight = 10f;
 
     private Rigidbody rgb = null;
-    
+
     private bool isGrounded = true;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         rgb = GetComponent<Rigidbody>();
         SendMessage("SetLifes");
         pause = GameObject.Find("pausemenu");
         pause.SetActive(false);
-       
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             rgb.velocity = new Vector3(0, jumpHeight, 0);
             animations.Play("diehard");
 
-        } else if (isGrounded && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))  {
-
+        }
+        else if (isGrounded && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))
+        {
             animations.Play("salute");
-        } else  {
-             animations.Play("run");
+        }
+        else
+        {
+            animations.Play("run");
         }
 
         if (Input.GetKeyDown("escape"))
@@ -48,7 +54,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         gameObject.transform.Translate(new Vector3(0, 0, speed * Time.deltaTime), Space.World);
-	}
+    }
 
     void OnCollisionEnter(Collision col)
     {
@@ -59,11 +65,12 @@ public class PlayerController : MonoBehaviour {
 
         if (col.gameObject.CompareTag("Obstacle"))
         {
-           SendMessage("OnObstacleTouched");
+            SendMessage("OnObstacleTouched");
         }
     }
 
-    void OnCollisionExit(Collision col) {
+    void OnCollisionExit(Collision col)
+    {
         if (col.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
