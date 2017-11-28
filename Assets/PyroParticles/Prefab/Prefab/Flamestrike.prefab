@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 11456544}
   m_Layer: 8
   m_Name: Flamestrike
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -528,6 +528,7 @@ MonoBehaviour:
   ProjectileColliderSpeed: 450
   ProjectileDirection: {x: 0, y: -1, z: 0}
   ProjectileCollisionLayers:
+    serializedVersion: 2
     m_Bits: 4294967039
   ProjectileDestroyParticleSystemsOnCollision: []
 --- !u!114 &11483642

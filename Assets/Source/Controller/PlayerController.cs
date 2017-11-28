@@ -62,8 +62,11 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
+    }
 
-        if (col.gameObject.CompareTag("Obstacle"))
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Obstacle"))
         {
             SendMessage("OnObstacleTouched");
         }

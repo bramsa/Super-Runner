@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HighscoreController : MonoBehaviour {
@@ -39,6 +37,15 @@ public class HighscoreController : MonoBehaviour {
         if (highScoreData.IsHighestScore(score))
         {
             highScoreData.SetHighscore(score, "Playername");
+        }
+    }
+
+    public Text txtHighscore = null;
+    public void OnShowHighscore()
+    {
+        if (txtHighscore != null)
+        {
+            txtHighscore.text = highScoreData.GetScore().ToString();
         }
     }
 }

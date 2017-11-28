@@ -19,6 +19,7 @@ public class LifesController : MonoBehaviour {
 		// wenn keine Leben mehr: gameover-Methode aufrufen
 		if (lifes == 0)
         {
+            SendMessage("OnPlayerDies");
             GameOver();            
 		}
 	}
