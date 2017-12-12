@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 lastPosition;
     private Boolean dieAnimationPlayed = false;
 
-    // Use this for initialization
+    // Sets everything in the controller up to start the game
     void Start()
     {
         rgb = GetComponent<Rigidbody>();
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
         gameOverMenu.SetActive(false);
 
 
+       
         //pause = GameObject.Find("pausemenu");
         pause.SetActive(false);
         //gameOver = GameObject.Find("gameover");
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
+    // Checks if the player is touches the ground, which inputs are pressed and if the game is over and reacts to it
     void Update()
     {
        if (isCrashed)
@@ -88,22 +90,19 @@ public class PlayerController : MonoBehaviour
         }
 	}
 
-    public void Die()
-    {
-        animations.Play("diehard"); 
-    
-    }
-
+    // allows the LifesController to tell the PlayerController that the player crashed
     public void playerCrashed()
     {
         isCrashed = true;
     }
 
+    // moves the player forward
     public void Move(float deltaTime)
     {
         gameObject.transform.Translate(new Vector3(0, 0, speed * deltaTime), Space.World);
     }
 
+    // pauses the game
     public void Pause()
     {
         if (Time.timeScale == 1)
@@ -113,6 +112,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // plays the run animation and sets the hight of the player to full height
     public void Run()
     {
         animations.Play("run");
@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour
         boxCol.center = new Vector3((float)-8.940697e-09, (float)0.1984264, (float)0.01407976);
     }
 
+    // plasy the Duck (salute) animation and sets the player height to the duck height to fit under obstacles
     public void Duck()
     {
         animations["salute"].speed = 10f;
@@ -133,12 +134,14 @@ public class PlayerController : MonoBehaviour
         boxCol.center = new Vector3((float)-8.940697e-09, (float)0.09670291, (float)0.01407976);
     }
 
+    // moves the player upwards and plays an animation
     public void Jump()
     {
         rgb.velocity = new Vector3(0, jumpHeight, 0);
         animations.Play("diehard");
     }
 
+    // sets the isGrounded attribute to true if the player touches the ground
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("Ground"))
@@ -147,6 +150,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // plays an animation and calls the OnObstacleTouched in LifesController if the player collided with an obstacle
     void OnTriggerEnter(Collider other)
     {
         lastPosition = new Vector3
@@ -168,13 +172,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // sets the isGrounded to false if the player leaves the bottom
     void OnCollisionExit(Collision col)
     {
         if (col.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
         }
-      //  gameObject.transform.position = lastPosition;
 
     }
 
@@ -190,6 +194,7 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    // if the player died, this method once executes a die animation and shows a gameover menu
     public void Crashed()
     {
         if (!dieAnimationPlayed)
