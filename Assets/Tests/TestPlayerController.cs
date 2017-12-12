@@ -1,13 +1,13 @@
-﻿using UnityEngine;
-using UnityEngine.TestTools;
-using NUnit.Framework;
-using System.Collections;
+﻿//using UnityEngine;
+// using UnityEngine.TestTools;
+//using NUnit.Framework;
+//using System.Collections;
 
-public class jumpAnd {
+//public class jumpAnd {
 
-/* 	[UnityTest]
-	public IEnumerator jumpAndWithEnumeratorPasses() {
-        //GameObject player = new GameObject().AddComponent(PlayerController.animations);
-		yield return null;
-	} */
-}
+///* 	[UnityTest]
+//	public IEnumerator jumpAndWithEnumeratorPasses() {
+//        //GameObject player = new GameObject().AddComponent(PlayerController.animations);
+//		yield return null;
+//	} */
+//}
