@@ -6,11 +6,17 @@ using UnityEngine;
 
 namespace Assets.Source.Controller
 {
+    /// <summary>
+    /// This class handles the changes of the colors of each obstacle and the ground.
+    /// </summary>
     class ColorController : MonoBehaviour
     {
+        /// <summary>
+        /// Use this for initialization.
+        /// </summary>
         public void Start()
         {
-            InvokeRepeating("changeColors", 0, 1);
+            InvokeRepeating("changeColors", 0, 0.5F);
         }
 
         /// <summary>

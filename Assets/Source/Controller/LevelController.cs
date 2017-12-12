@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The LevelController handles the loading of each next level.
+/// </summary>
 public class LevelController : MonoBehaviour
 {
 
@@ -13,34 +16,50 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private int reloadTimeValue = 200;
 
-    // Use this for initialization
+    /// <summary>
+    /// Use this for initialization.
+    /// </summary>
     void Start()
     {
         // ground = Resources.Load("Ground");
         generateObstacles(0);
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     void Update()
     {
 
     }
 
+    /// <summary>
+    /// This method is called when the player touches another game object.
+    /// </summary>
+    /// <param name="collider"></param>
     public void OnTriggerEnter(Collider collider)
     {
         // Map
         if (collider.gameObject.CompareTag("NextLevelBlock"))
         {
-            float newGroundZPosition = groundPosition.z + reloadTimeValue;
-            var newGroundPosition = new Vector3(0, 0, newGroundZPosition);
+            float newGroundLength =+ reloadTimeValue;
+            var newGroundPosition = new Vector3(0, 0, newGroundLength);
             reloadTimeValue += 200;
-            GameObject ground = Instantiate(Resources.Load("Prefabs/Ground", typeof(GameObject)) as GameObject, newGroundPosition, Quaternion.identity);
+            // GameObject ground = Instantiate(Resources.Load("Prefabs/Ground", typeof(GameObject)) as GameObject, newGroundPosition, Quaternion.identity);
+
+            GameObject ground = GameObject.FindGameObjectWithTag("Ground");
+            ground.GetComponentInChildren<Renderer>().transform.localScale = new Vector3(0, 0, newGroundLength + 200);
+
 
             // Obstacles start on the beginning of the ground
-            generateObstacles(newGroundZPosition - 100);
+            generateObstacles(newGroundLength - 100);
         }
     }
 
+    /// <summary>
+    /// Creates all new obstacles and the "nextLevelBlock" of the following level.
+    /// </summary>
+    /// <param name="newGroundZPosition"></param>
     public void generateObstacles(float newGroundZPosition)
     {
         for (int i = 1; i <= 5; i++)
@@ -52,7 +71,7 @@ public class LevelController : MonoBehaviour
             {
                 // Jump
                 case 1:
-                    var obstacle_1Position = new Vector3(0, 1.75F, obstacleZPosition);
+                    var obstacle_1Position = new Vector3(0, 1.5F, obstacleZPosition);
                     GameObject obstacle_1 = Instantiate(Resources.Load("Prefabs/Obstacle_1", typeof(GameObject)) as GameObject, obstacle_1Position, Quaternion.identity);
                     obstacle_1.transform.Rotate(0, 0, 90, Space.Self);
                     break;
