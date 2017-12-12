@@ -27,6 +27,6 @@ public class LifesController : MonoBehaviour
 
     void GameOver()
     {
-        Destroy(gameObject);
+       // Destroy(gameObject);
     }
 }

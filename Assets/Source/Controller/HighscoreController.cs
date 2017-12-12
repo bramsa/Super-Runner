@@ -35,6 +35,8 @@ public class HighscoreController : MonoBehaviour
 
     public void OnPlayerDies()
     {
+        PlayerController playerController = gameObject.GetComponent(typeof(PlayerController)) as PlayerController;
+        playerController.playerCrashed();
         if (highScoreData.IsHighestScore(score))
         {
             highScoreData.SetHighscore(score, "Playername");

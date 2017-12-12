@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
 
     public Animation animations = null;
     public GameObject ground = null;
-    public GameObject pause = null;
+    public GameObject pause;
+    public GameObject gameOverMenu;
     public float speed = 10f;
     public float jumpHeight = 10f;
 
@@ -17,21 +18,27 @@ public class PlayerController : MonoBehaviour
     private bool isCrashed = false;
     private bool isGrounded = true;
     private BoxCollider boxCol;
+    private Vector3 lastPosition;
+    private Boolean dieAnimationPlayed = false;
 
     // Use this for initialization
     void Start()
     {
         rgb = GetComponent<Rigidbody>();
         SendMessage("SetLifes");
-        pause = GameObject.Find("pausemenu");
+        gameOverMenu.SetActive(false);
+
+
+        //pause = GameObject.Find("pausemenu");
         pause.SetActive(false);
+        //gameOver = GameObject.Find("gameover");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isCrashed)
+       if (isCrashed)
         {
             Crashed();
         }
@@ -75,13 +82,21 @@ public class PlayerController : MonoBehaviour
            
         }
 
-        Move(Time.deltaTime);
+        if (!dieAnimationPlayed)
+        {
+            Move(Time.deltaTime);
+        }
 	}
 
     public void Die()
     {
         animations.Play("diehard"); 
     
+    }
+
+    public void playerCrashed()
+    {
+        isCrashed = true;
     }
 
     public void Move(float deltaTime)
@@ -100,7 +115,6 @@ public class PlayerController : MonoBehaviour
 
     public void Run()
     {
-
         animations.Play("run");
         boxCol = gameObject.GetComponent<BoxCollider>();
 
@@ -135,11 +149,22 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        lastPosition = new Vector3
+        {
+            x = gameObject.transform.position.x,
+            y = gameObject.transform.position.y,
+            z = gameObject.transform.position.x,
+        };
+
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            SendMessage("OnObstacleTouched");
             animations.Play("diehard");
-            isCrashed = true;
+            Renderer groundRenderer = ground.GetComponent(typeof(Renderer)) as Renderer;
+            groundRenderer.material.color = Color.blue;
+
+
+            SendMessage("OnObstacleTouched");
+            
         }
     }
 
@@ -149,6 +174,8 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
         }
+      //  gameObject.transform.position = lastPosition;
+
     }
 
     public void OnResume()
@@ -165,7 +192,15 @@ public class PlayerController : MonoBehaviour
 
     public void Crashed()
     {
-        animations.Play("diehard");
+        if (!dieAnimationPlayed)
+        {
+            animations.Play("diehard");
+            animations.Stop("run");
+            rgb.velocity = new Vector3(0, 0, speed);
+            dieAnimationPlayed = true;
+            gameOverMenu.SetActive(true);
+        }
+       
 
     }
 }
