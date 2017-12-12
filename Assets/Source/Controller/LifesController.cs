@@ -11,7 +11,7 @@ public class LifesController : MonoBehaviour
         lifes = 2;
     }
 
-    void OnObstacleTouched()
+    public void OnObstacleTouched()
     {
         // minus 1 life on collision
         lifes--;

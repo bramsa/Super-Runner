@@ -3,6 +3,9 @@
 //using NUnit.Framework;
 //using System.Collections;
 
+/// <summary>
+/// This is the test class, which only should be uncommented if used.
+/// </summary>
 //public class jumpAnd {
 
 ///* 	[UnityTest]
