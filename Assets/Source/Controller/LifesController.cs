@@ -1,12 +1,11 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LifesController : MonoBehaviour
 {
 
     public int lifes;
 
-    // bei Spielstart aufrufen um die Leben auf 2 zu setzen
+    // set lifes to 2
     void SetLifes()
     {
         lifes = 2;
@@ -14,10 +13,10 @@ public class LifesController : MonoBehaviour
 
     void OnObstacleTouched()
     {
-        // minus 1 leben bei Hindernisberührung
+        // minus 1 life on collision
         lifes--;
 
-        // wenn keine Leben mehr: gameover-Methode aufrufen
+        // run GameOver-method when lifes == 0
         if (lifes == 0)
         {
             SendMessage("OnPlayerDies");
