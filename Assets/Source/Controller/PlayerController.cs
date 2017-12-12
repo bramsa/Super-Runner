@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-
     public Animation animations = null;
     public GameObject ground = null;
     public GameObject pause = null;
@@ -25,7 +24,6 @@ public class PlayerController : MonoBehaviour
         SendMessage("SetLifes");
         pause = GameObject.Find("pausemenu");
         pause.SetActive(false);
-
     }
 
     // Update is called once per frame
@@ -41,18 +39,15 @@ public class PlayerController : MonoBehaviour
         }
         else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))
         {
-
             Duck();
         }
         else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             rgb.velocity = new Vector3(0, jumpHeight, 0);
             animations.Play("diehard");
-
         }
         else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))
         {
-
             animations["salute"].speed = 10f;
 
             animations.Play("salute");
@@ -71,8 +66,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("escape"))
         {
-            Pause();
-           
+            Pause();           
         }
 
         Move(Time.deltaTime);
@@ -81,7 +75,6 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         animations.Play("diehard"); 
-    
     }
 
     public void Move(float deltaTime)
@@ -100,7 +93,6 @@ public class PlayerController : MonoBehaviour
 
     public void Run()
     {
-
         animations.Play("run");
         boxCol = gameObject.GetComponent<BoxCollider>();
 
@@ -166,6 +158,5 @@ public class PlayerController : MonoBehaviour
     public void Crashed()
     {
         animations.Play("diehard");
-
     }
 }
