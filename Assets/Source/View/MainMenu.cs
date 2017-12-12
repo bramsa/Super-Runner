@@ -1,14 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// The class for the main menu / starting screen..
+/// </summary>
 public class MainMenu : MonoBehaviour {
 
+    public Text txtHighscore = null;
+    public HighscoreData highScoreData = null;
+
     /// <summary>
-    /// Use this for initialization
+    /// Use this for initialization.
     /// </summary>
-	void Start()
+    void Start()
     {
         // do nothing
 	}
@@ -22,10 +29,15 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
-    public void ShowHighscore()
-    {
-        // 3 = "highscore"
-        SceneManager.LoadScene(3, LoadSceneMode.Single);
+    /// <summary>
+    /// Shows the highscore on the main menu.
+    /// </summary>
+    public void OnShowHighscore()
+    {       
+        if (txtHighscore != null)
+        {
+            txtHighscore.text = highScoreData.GetScore().ToString();
+        }
     }
 
     /// <summary>

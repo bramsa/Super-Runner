@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-
     public Animation animations = null;
     public GameObject ground = null;
     public GameObject pause;
@@ -32,8 +31,11 @@ public class PlayerController : MonoBehaviour
        
         //pause = GameObject.Find("pausemenu");
         pause.SetActive(false);
+<<<<<<< HEAD
         //gameOver = GameObject.Find("gameover");
 
+=======
+>>>>>>> 13e2b6760bccd49011fa899d95bebe86b903bb17
     }
 
     // Update is called once per frame
@@ -93,7 +95,10 @@ public class PlayerController : MonoBehaviour
     // allows the LifesController to tell the PlayerController that the player crashed
     public void playerCrashed()
     {
+<<<<<<< HEAD
         isCrashed = true;
+=======
+>>>>>>> 13e2b6760bccd49011fa899d95bebe86b903bb17
     }
 
     // moves the player forward
@@ -197,6 +202,7 @@ public class PlayerController : MonoBehaviour
     // if the player died, this method once executes a die animation and shows a gameover menu
     public void Crashed()
     {
+<<<<<<< HEAD
         if (!dieAnimationPlayed)
         {
             animations.Play("diehard");
@@ -207,5 +213,6 @@ public class PlayerController : MonoBehaviour
         }
        
 
+=======
+>>>>>>> 13e2b6760bccd49011fa899d95bebe86b903bb17
     }
-}
