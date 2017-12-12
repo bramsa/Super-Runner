@@ -25,6 +25,10 @@ public class HighscoreController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Calculates the actual score by the position of the object owner (game object)
+    /// </summary>
+    /// <returns>the score</returns>
     public int GetScore()
     {
         float z = gameObject.transform.position.z;
@@ -33,6 +37,9 @@ public class HighscoreController : MonoBehaviour
         return Mathf.RoundToInt(scoreMultiplicator * z);
     }
 
+    /// <summary>
+    /// This function should be called when the player dies
+    /// </summary>
     public void OnPlayerDies()
     {
         if (highScoreData.IsHighestScore(score))
@@ -42,6 +49,9 @@ public class HighscoreController : MonoBehaviour
     }
 
     public Text txtHighscore = null;
+    /// <summary>
+    /// This function should be called, if the highscore has to be displayed in the txtHighscore
+    /// </summary>
     public void OnShowHighscore()
     {
         if (txtHighscore != null)
