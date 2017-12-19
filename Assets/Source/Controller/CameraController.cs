@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class handles the behaviour of the camera.
+/// </summary>
 public class CameraController : MonoBehaviour
 {
 
@@ -14,13 +17,17 @@ public class CameraController : MonoBehaviour
 
     private float secondsPassedSinceLastSwitch = 0f;
 
-    // Use this for initialization
+    /// <summary>
+    /// Use this for initialization
+    /// </summary>
     void Start()
     {
         SwitchToRandomPosition();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     void Update()
     {
         secondsPassedSinceLastSwitch += Time.deltaTime;

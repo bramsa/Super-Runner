@@ -1,21 +1,29 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class is responsible for the handling of the high score.
+/// </summary>
 public class HighscoreController : MonoBehaviour
 {
 
     public Text LBLScoreOutput = null;
     public HighscoreData highScoreData = null;
+    public Text txtHighscore = null;
 
     private int score = 0;
 
-    // Use this for initialization
+    /// <summary>
+    /// Use this for initialization
+    /// </summary>
     void Start()
     {
 
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     void Update()
     {
         score = GetScore();
@@ -50,7 +58,6 @@ public class HighscoreController : MonoBehaviour
         }
     }
 
-    public Text txtHighscore = null;
     /// <summary>
     /// This function should be called, if the highscore has to be displayed in the txtHighscore
     /// </summary>
