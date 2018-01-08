@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// The model class which is responsible for the highscore.
 /// </summary>
 [CreateAssetMenu(fileName = "Highscore", menuName = "Highscore", order = 1)]
 public class HighscoreData : ScriptableObject {
-    new public string name = null;
     public int score = 0;
 
     /// <summary>
@@ -25,22 +22,12 @@ public class HighscoreData : ScriptableObject {
     /// </summary>
     /// <param name="score"></param>
     /// <param name="name"></param>
-    public void SetHighscore(int score, string name)
+    public void SetHighscore(int score)
     {
         if (IsHighestScore(score))
         {
-            this.name = name;
             this.score = score;
         }
-    }
-
-    /// <summary>
-    /// Returns the name.
-    /// </summary>
-    /// <returns></returns>
-    public string GetName()
-    {
-        return name;
     }
 
     /// <summary>
