@@ -182,9 +182,8 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            animations.Play("diehard");
-            Renderer groundRenderer = ground.GetComponent(typeof(Renderer)) as Renderer;
-            groundRenderer.material.color = Color.blue;
+           /* Renderer groundRenderer = ground.GetComponent(typeof(Renderer)) as Renderer;
+            groundRenderer.material.color = Color.blue;*/
 
 
             SendMessage("OnObstacleTouched");
