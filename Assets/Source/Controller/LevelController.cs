@@ -45,10 +45,10 @@ public class LevelController : MonoBehaviour
             float newGroundLength =+ reloadTimeValue;
             var newGroundPosition = new Vector3(0, 0, newGroundLength);
             reloadTimeValue += 200;
-            // GameObject ground = Instantiate(Resources.Load("Prefabs/Ground", typeof(GameObject)) as GameObject, newGroundPosition, Quaternion.identity);
+            GameObject ground = Instantiate(Resources.Load("Prefabs/Ground", typeof(GameObject)) as GameObject, newGroundPosition, Quaternion.identity);
 
-            GameObject ground = GameObject.FindGameObjectWithTag("Ground");
-            ground.GetComponentInChildren<Renderer>().transform.localScale = new Vector3(0, 0, newGroundLength + 200);
+            //GameObject ground = GameObject.FindGameObjectWithTag("Ground");
+            //ground.GetComponentInChildren<Renderer>().transform.localScale = new Vector3(0, 0, newGroundLength + 200);
 
 
             // Obstacles start on the beginning of the ground

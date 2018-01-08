@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rgb = null;
     private bool isCrashed = false;
-    private bool isGrounded = true;
+    private int isGrounded = 1;
     private BoxCollider boxCol;
     private Vector3 lastPosition;
     private Boolean dieAnimationPlayed = false;
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         {
             Crashed();
         }
-        else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
+        else if (isGrounded > 0 && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             Jump();
         }
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             Duck();
         }
-        else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
+        else if (isGrounded > 0 && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             rgb.velocity = new Vector3(0, jumpHeight, 0);
             animations.Play("diehard");
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true;
+            isGrounded++;
         }
     }
 
@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Ground"))
         {
-            isGrounded = false;
+            isGrounded--;
         }
 
     }
