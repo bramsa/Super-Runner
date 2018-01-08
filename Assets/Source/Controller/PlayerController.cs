@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Update()
     {
-       if (isCrashed)
+        if (isCrashed)
         {
             Crashed();
         }
@@ -80,14 +80,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("escape"))
         {
-            Pause();           
+            Pause();
         }
 
         if (!dieAnimationPlayed)
         {
             Move(Time.deltaTime);
         }
-	}
+    }
 
     /// <summary>
     ///  Allows the LifesController to tell the PlayerController that the player crashed
@@ -182,9 +182,8 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            animations.Play("diehard");
-            Renderer groundRenderer = ground.GetComponent(typeof(Renderer)) as Renderer;
-            groundRenderer.material.color = Color.blue;
+           /* Renderer groundRenderer = ground.GetComponent(typeof(Renderer)) as Renderer;
+            groundRenderer.material.color = Color.blue;*/
 
 
             SendMessage("OnObstacleTouched");
