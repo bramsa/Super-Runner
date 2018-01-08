@@ -95,12 +95,8 @@ public class PlayerController : MonoBehaviour
     public void playerCrashed()
     {
         isCrashed = true;
-<<<<<<< HEAD
-=======
-        animations.Play("diehard"); 
->>>>>>> 13e2b6760bccd49011fa899d95bebe86b903bb17
-=======
->>>>>>> 5fbb75e4f60079c2e5bcab2d84666fe6e74b1c5e
+
+
     }
 
     /// <summary>
@@ -240,13 +236,7 @@ public class PlayerController : MonoBehaviour
             dieAnimationPlayed = true;
             gameOverMenu.SetActive(true);
         }
-<<<<<<< HEAD
-       
 
-=======
-        animations.Play("diehard");
->>>>>>> 13e2b6760bccd49011fa899d95bebe86b903bb17
-=======
->>>>>>> 5fbb75e4f60079c2e5bcab2d84666fe6e74b1c5e
+
     }
 }
