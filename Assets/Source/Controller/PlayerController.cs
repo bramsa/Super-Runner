@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// The controller for the behaviour of the player.
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
     public Animation animations = null;
@@ -20,26 +23,24 @@ public class PlayerController : MonoBehaviour
     private Vector3 lastPosition;
     private Boolean dieAnimationPlayed = false;
 
-    // Sets everything in the controller up to start the game
+    /// <summary>
+    ///  Sets everything in the controller up to start the game
+    /// </summary>
     void Start()
     {
         rgb = GetComponent<Rigidbody>();
         SendMessage("SetLifes");
         gameOverMenu.SetActive(false);
 
-
-       
         //pause = GameObject.Find("pausemenu");
         pause.SetActive(false);
-<<<<<<< HEAD
         //gameOver = GameObject.Find("gameover");
-
-=======
->>>>>>> 13e2b6760bccd49011fa899d95bebe86b903bb17
     }
 
-    // Update is called once per frame
-    // Checks if the player is touches the ground, which inputs are pressed and if the game is over and reacts to it
+    /// <summary>
+    /// Update is called once per frame
+    /// Checks if the player is touches the ground, which inputs are pressed and if the game is over and reacts to it.
+    /// </summary>
     void Update()
     {
        if (isCrashed)
@@ -88,23 +89,32 @@ public class PlayerController : MonoBehaviour
         }
 	}
 
-    // allows the LifesController to tell the PlayerController that the player crashed
+    /// <summary>
+    ///  Allows the LifesController to tell the PlayerController that the player crashed
+    /// </summary>
     public void playerCrashed()
     {
-<<<<<<< HEAD
         isCrashed = true;
+<<<<<<< HEAD
 =======
         animations.Play("diehard"); 
 >>>>>>> 13e2b6760bccd49011fa899d95bebe86b903bb17
+=======
+>>>>>>> 5fbb75e4f60079c2e5bcab2d84666fe6e74b1c5e
     }
 
-    // moves the player forward
+    /// <summary>
+    ///  Moves the player forward
+    /// </summary>
+    /// <param name="deltaTime"></param>
     public void Move(float deltaTime)
     {
         gameObject.transform.Translate(new Vector3(0, 0, speed * deltaTime), Space.World);
     }
 
-    // pauses the game
+    /// <summary>
+    /// Pauses the game
+    /// </summary>
     public void Pause()
     {
         if (Time.timeScale == 1)
@@ -114,7 +124,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // plays the run animation and sets the hight of the player to full height
+    /// <summary>
+    /// Plays the run animation and sets the hight of the player to full height.
+    /// </summary>
     public void Run()
     {
         animations.Play("run");
@@ -124,7 +136,9 @@ public class PlayerController : MonoBehaviour
         boxCol.center = new Vector3((float)-8.940697e-09, (float)0.1984264, (float)0.01407976);
     }
 
-    // plasy the Duck (salute) animation and sets the player height to the duck height to fit under obstacles
+    /// <summary>
+    /// Plays the Duck (salute) animation and sets the player height to the duck height to fit under obstacles.
+    /// </summary>
     public void Duck()
     {
         animations["salute"].speed = 10f;
@@ -136,14 +150,19 @@ public class PlayerController : MonoBehaviour
         boxCol.center = new Vector3((float)-8.940697e-09, (float)0.09670291, (float)0.01407976);
     }
 
-    // moves the player upwards and plays an animation
+    /// <summary>
+    ///  Moves the player upwards and plays an animation
+    /// </summary>
     public void Jump()
     {
         rgb.velocity = new Vector3(0, jumpHeight, 0);
         animations.Play("diehard");
     }
 
-    // sets the isGrounded attribute to true if the player touches the ground
+    /// <summary>
+    /// Sets the isGrounded attribute to true if the player touches the ground
+    /// </summary>
+    /// <param name="col"></param>
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("Ground"))
@@ -152,7 +171,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // plays an animation and calls the OnObstacleTouched in LifesController if the player collided with an obstacle
+    /// <summary>
+    /// Plays an animation and calls the OnObstacleTouched in LifesController if the player collided with an obstacle
+    /// </summary>
+    /// <param name="other"></param>
     void OnTriggerEnter(Collider other)
     {
         lastPosition = new Vector3
@@ -174,7 +196,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // sets the isGrounded to false if the player leaves the bottom
+    /// <summary>
+    /// Sets the isGrounded to false if the player leaves the bottom
+    /// </summary>
+    /// <param name="col"></param>
     void OnCollisionExit(Collision col)
     {
         if (col.gameObject.CompareTag("Ground"))
@@ -184,22 +209,29 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Close the pause menu.
+    /// </summary>
     public void OnResume()
     {
         GameObject.Find("pausemenu").SetActive(false);
         Time.timeScale = 1;
     }
 
+    /// <summary>
+    /// Start the game over.
+    /// </summary>
     public void OnNewGame()
     {
         SceneManager.LoadScene(1, LoadSceneMode.Single);
         Time.timeScale = 1;
     }
 
-    // if the player died, this method once executes a die animation and shows a gameover menu
+    /// <summary>
+    /// If the player died, this method once executes a die animation and shows a gameover menu
+    /// </summary>
     public void Crashed()
     {
-<<<<<<< HEAD
         if (!dieAnimationPlayed)
         {
             animations.Play("diehard");
@@ -208,10 +240,13 @@ public class PlayerController : MonoBehaviour
             dieAnimationPlayed = true;
             gameOverMenu.SetActive(true);
         }
+<<<<<<< HEAD
        
 
 =======
         animations.Play("diehard");
 >>>>>>> 13e2b6760bccd49011fa899d95bebe86b903bb17
+=======
+>>>>>>> 5fbb75e4f60079c2e5bcab2d84666fe6e74b1c5e
     }
 }
