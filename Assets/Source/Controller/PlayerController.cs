@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         rgb = GetComponent<Rigidbody>();
         SendMessage("SetLifes");
-        gameOverMenu.SetActive(false);
+        // gameOverMenu.SetActive(false);
 
         //pause = GameObject.Find("pausemenu");
         pause.SetActive(false);
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Update()
     {
-       if (isCrashed)
+        if (isCrashed)
         {
             Crashed();
         }
@@ -84,14 +84,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("escape"))
         {
             Pause();
-           
+
         }
 
         if (!dieAnimationPlayed)
         {
             Move(Time.deltaTime);
         }
-	}
+    }
 
     /// <summary>
     ///  Allows the LifesController to tell the PlayerController that the player crashed
@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
 
 
             SendMessage("OnObstacleTouched");
-            
+
         }
     }
 
@@ -236,6 +236,7 @@ public class PlayerController : MonoBehaviour
             animations.Stop("run");
             rgb.velocity = new Vector3(0, 0, speed);
             dieAnimationPlayed = true;
-            gameOverMenu.SetActive(true);
+            // gameOverMenu.SetActive(true);
         }
     }
+}
