@@ -112,4 +112,12 @@ public class LevelController : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Exits the application
+    /// </summary>
+    public void exitApplication()
+    {
+        Application.Quit();
+    }
 }
