@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rgb = null;
     private bool isCrashed = false;
-    private int isGrounded = 1;
+    private int isGrounded = 0;
     private BoxCollider boxCol;
     private Vector3 lastPosition;
     private Boolean dieAnimationPlayed = false;
