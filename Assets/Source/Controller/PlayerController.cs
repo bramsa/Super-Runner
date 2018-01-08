@@ -53,18 +53,15 @@ public class PlayerController : MonoBehaviour
         }
         else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))
         {
-
             Duck();
         }
         else if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)))
         {
             rgb.velocity = new Vector3(0, jumpHeight, 0);
             animations.Play("diehard");
-
         }
         else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow)))
         {
-
             animations["salute"].speed = 10f;
 
             animations.Play("salute");
@@ -84,7 +81,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("escape"))
         {
             Pause();
-
         }
 
         if (!dieAnimationPlayed)
@@ -99,6 +95,8 @@ public class PlayerController : MonoBehaviour
     public void playerCrashed()
     {
         isCrashed = true;
+
+
     }
 
     /// <summary>
@@ -238,5 +236,7 @@ public class PlayerController : MonoBehaviour
             dieAnimationPlayed = true;
             // gameOverMenu.SetActive(true);
         }
+
+
     }
 }
