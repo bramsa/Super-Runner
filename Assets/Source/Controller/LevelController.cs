@@ -65,7 +65,7 @@ public class LevelController : MonoBehaviour
         for (int i = 1; i <= 5; i++)
         {
             float obstacleZPosition = newGroundZPosition + i * 40;
-            int obstacleType = Random.Range(1, 6);
+            int obstacleType = Random.Range(1, 5);
 
             switch (obstacleType)
             {
@@ -74,6 +74,8 @@ public class LevelController : MonoBehaviour
                     var obstacle_1Position = new Vector3(0, 1.5F, obstacleZPosition);
                     GameObject obstacle_1 = Instantiate(Resources.Load("Prefabs/Obstacle_1", typeof(GameObject)) as GameObject, obstacle_1Position, Quaternion.identity);
                     obstacle_1.transform.Rotate(0, 0, 90, Space.Self);
+                    var obstacle_5Position = new Vector3(0, 0, obstacleZPosition);
+                    GameObject obstacle_5 = Instantiate(Resources.Load("Prefabs/Obstacle_5", typeof(GameObject)) as GameObject, obstacle_5Position, Quaternion.identity);
                     break;
 
                 // Duck
@@ -96,11 +98,11 @@ public class LevelController : MonoBehaviour
                     GameObject obstacle_4 = Instantiate(Resources.Load("Prefabs/Obstacle_4", typeof(GameObject)) as GameObject, obstacle_4Position, Quaternion.identity);
                     break;
 
-                // WallOfFire
-                case 5:
-                    var obstacle_5Position = new Vector3(0, 0, obstacleZPosition);
-                    GameObject obstacle_5 = Instantiate(Resources.Load("Prefabs/Obstacle_5", typeof(GameObject)) as GameObject, obstacle_5Position, Quaternion.identity);
-                    break;
+                //// WallOfFire
+                //case 5:
+                //    var obstacle_5Position = new Vector3(0, 0, obstacleZPosition);
+                //    GameObject obstacle_5 = Instantiate(Resources.Load("Prefabs/Obstacle_5", typeof(GameObject)) as GameObject, obstacle_5Position, Quaternion.identity);
+                //    break;
             }
 
             // NextLevel
