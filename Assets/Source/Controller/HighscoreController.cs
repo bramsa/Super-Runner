@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 using UnityEngine.UI;
+using System.Text;
+using System.Xml.Serialization;
 
 /// <summary>
 /// This class is responsible for the handling of the high score.
@@ -18,7 +21,7 @@ public class HighscoreController : MonoBehaviour
     /// </summary>
     void Start()
     {
-
+        LoadHighscore();
     }
 
     /// <summary>
@@ -50,12 +53,23 @@ public class HighscoreController : MonoBehaviour
     /// </summary>
     public void OnPlayerDies()
     {
-        PlayerController playerController = gameObject.GetComponent(typeof(PlayerController)) as PlayerController;
+        PlayerController playerController = gameObject.GetComponent<PlayerController>();
         playerController.playerCrashed();
         if (highScoreData.IsHighestScore(score))
         {
-            highScoreData.SetHighscore(score, "Playername");
+            highScoreData.SetHighscore(score);
+            SaveHighscore();
         }
+    }
+
+    public void BeforeGameExits()
+    {
+        if (highScoreData.IsHighestScore(score))
+        {
+            highScoreData.SetHighscore(score);
+        }
+
+        SaveHighscore();
     }
 
     /// <summary>
@@ -65,7 +79,58 @@ public class HighscoreController : MonoBehaviour
     {
         if (txtHighscore != null)
         {
+            if (highScoreData.IsHighestScore(score))
+            {
+                highScoreData.SetHighscore(score);
+                SaveHighscore();
+            }
+
             txtHighscore.text = highScoreData.GetScore().ToString();
         }
+    }
+
+    public void SaveHighscore()
+    {
+        string serialized = Serialize(highScoreData);
+
+        StreamWriter file = File.CreateText(Application.persistentDataPath + "/highscore.xml");
+        file.Write(serialized);
+        file.Close();
+    }
+
+    public void LoadHighscore()
+    {
+        if (File.Exists(Application.persistentDataPath + "/highscore.xml"))
+        {
+            highScoreData = DeSerialize<HighscoreData>(File.ReadAllText(Application.persistentDataPath + "/highscore.xml"));
+        }
+    }
+
+    public static string Serialize(object obj)
+    {
+        StringBuilder xml = new StringBuilder();
+
+        XmlSerializer serializer = new XmlSerializer(obj.GetType());
+
+        using (TextWriter textWriter = new StringWriter(xml))
+        {
+            serializer.Serialize(textWriter, obj);
+        }
+
+        return xml.ToString();
+    }
+
+    public static T DeSerialize<T>(string xml)
+    {
+        T obj = default(T);
+
+        XmlSerializer deserializer = new XmlSerializer(typeof(T));
+
+        using (TextReader textReader = new StringReader(xml))
+        {
+            obj = (T)deserializer.Deserialize(textReader);
+        }
+
+        return obj;
     }
 }

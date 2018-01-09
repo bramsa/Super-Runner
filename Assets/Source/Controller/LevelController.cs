@@ -120,6 +120,7 @@ public class LevelController : MonoBehaviour
     /// </summary>
     public void exitApplication()
     {
+        SendMessage("BeforeGameExits", null, SendMessageOptions.DontRequireReceiver);
         Application.Quit();
     }
 }
