@@ -36,6 +36,8 @@ public class MainMenu : MonoBehaviour {
     {       
         if (txtHighscore != null)
         {
+            HighscoreController hc = new HighscoreController();
+            hc.LoadHighscore();
             txtHighscore.text = highScoreData.GetScore().ToString();
         }
     }
